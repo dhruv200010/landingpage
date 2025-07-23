@@ -1,7 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle, Play, Zap, Scissors, Tag, Eye, Sparkles, Users, Workflow, ChevronDown, ArrowRight, Clock, Brain, Target, Shield, Gift } from 'lucide-react';
+import { 
+  FiCheckCircle, 
+  FiPlay, 
+  FiZap, 
+  FiScissors, 
+  FiTag, 
+  FiEye, 
+  FiStar, 
+  FiUsers, 
+  FiSettings, 
+  FiChevronDown, 
+  FiArrowRight, 
+  FiClock, 
+  FiHeart, 
+  FiTarget, 
+  FiShield, 
+  FiGift 
+} from 'react-icons/fi';
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -50,37 +67,37 @@ export default function Home() {
   const aiFeatures = [
     {
       id: 'ai-clipping',
-      icon: <Scissors className="w-5 h-5" />,
+      icon: <FiScissors className="w-5 h-5" />,
       title: "AI Clipping",
       description: "Auto-detect viral-worthy moments"
     },
     {
       id: 'ai-captioning',
-      icon: <Tag className="w-5 h-5" />,
+      icon: <FiTag className="w-5 h-5" />,
       title: "AI Captioning",
       description: "Generate accurate, stylish subtitles"
     },
     {
       id: 'ai-reframe',
-      icon: <Eye className="w-5 h-5" />,
+      icon: <FiEye className="w-5 h-5" />,
       title: "AI Reframe",
       description: "Optimize for different platforms"
     },
     {
       id: 'ai-broll',
-      icon: <Play className="w-5 h-5" />,
+      icon: <FiPlay className="w-5 h-5" />,
       title: "AI B-Roll",
       description: "Auto-generate complementary footage"
     },
     {
       id: 'ai-audio',
-      icon: <Zap className="w-5 h-5" />,
+      icon: <FiZap className="w-5 h-5" />,
       title: "AI Audio Enhance",
       description: "Crystal clear audio optimization"
     },
     {
       id: 'ai-voiceover',
-      icon: <Sparkles className="w-5 h-5" />,
+      icon: <FiStar className="w-5 h-5" />,
       title: "AI Voice-over",
       description: "Natural-sounding voice synthesis"
     }
@@ -88,37 +105,37 @@ export default function Home() {
 
   const valueProps = [
     {
-      icon: <Clock className="w-8 h-8" />,
+      icon: <FiClock className="w-8 h-8" />,
       title: "1 Long Video → 10 Viral Shorts",
       description: "Turn any long video into 10+ scroll-stopping clips — in seconds, not hours.",
       highlight: "in seconds, not hours"
     },
     {
-      icon: <Brain className="w-8 h-8" />,
+      icon: <FiHeart className="w-8 h-8" />,
       title: "Your Content Engine on Autopilot",
       description: "Let our AI auto-detect viral-worthy moments, generate captions, trim silence, and craft punchy titles + hashtags — all tailored to your video.",
       highlight: "on Autopilot"
     },
     {
-      icon: <Tag className="w-8 h-8" />,
+      icon: <FiTag className="w-8 h-8" />,
       title: "Caption-Perfect, Every Time",
       description: "We use best-in-class AI transcription to generate accurate, stylish subtitles — even on our free plan.",
       highlight: "Every Time"
     },
     {
-      icon: <Target className="w-8 h-8" />,
+      icon: <FiTarget className="w-8 h-8" />,
       title: "Shorts That Actually Get Seen",
       description: "Our viral intelligence isn't random — it's engineered for engagement. Titles, tags, and thumbnails are optimized automatically to drive reach.",
       highlight: "Actually Get Seen"
     },
     {
-      icon: <Users className="w-8 h-8" />,
+      icon: <FiUsers className="w-8 h-8" />,
       title: "Works with you, not over you",
       description: "Zero editing skill needed. Our AI handles the heavy lifting while you focus on creating amazing content.",
       highlight: "Zero editing skill needed"
     },
     {
-      icon: <Shield className="w-8 h-8" />,
+      icon: <FiShield className="w-8 h-8" />,
       title: "No Watermarks. Ever.",
       description: "Unlike others, even our free trial has no branding. You own your content — 100%.",
       highlight: "Ever"
@@ -127,19 +144,19 @@ export default function Home() {
 
   const businessFeatures = [
     {
-      icon: <Tag className="w-8 h-8" />,
+      icon: <FiTag className="w-8 h-8" />,
       title: "Brand Templates",
       description: "Create consistent brand templates with custom fonts, colors, logos, and branded intros/outros.",
       visual: "Brand consistency across all videos"
     },
     {
-      icon: <Users className="w-8 h-8" />,
+      icon: <FiUsers className="w-8 h-8" />,
       title: "Team Workspace",
       description: "Collaborate seamlessly with your team. Manage projects, share templates, and streamline your creative workflow.",
       visual: "Team collaboration made easy"
     },
     {
-      icon: <Workflow className="w-8 h-8" />,
+      icon: <FiSettings className="w-8 h-8" />,
       title: "Workflow Integration",
       description: "Integrate with your existing tools via API. Automate video creation workflows with your CMS and other platforms.",
       visual: "Seamless API integration"
@@ -154,7 +171,7 @@ export default function Home() {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <Play className="w-5 h-5 text-white" />
+                <FiPlay className="w-5 h-5 text-white" />
               </div>
               <span className="ml-3 text-xl font-bold text-slate-900">Automation Tool</span>
             </div>
@@ -195,7 +212,7 @@ export default function Home() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="bg-slate-800 rounded-2xl p-2 flex items-center">
                     <div className="flex-1 flex items-center px-4 py-3">
-                      <Play className="w-5 h-5 text-slate-400 mr-3" />
+                      <FiPlay className="w-5 h-5 text-slate-400 mr-3" />
                       <input
                         type="email"
                         value={email}
@@ -213,7 +230,7 @@ export default function Home() {
                       {isLoading ? 'Signing up...' : (
                         <>
                           Get Early Access
-                          <ArrowRight className="w-5 h-5 ml-2" />
+                          <FiArrowRight className="w-5 h-5 ml-2" />
                         </>
                       )}
                     </button>
@@ -228,7 +245,7 @@ export default function Home() {
               <div className="max-w-2xl mx-auto mb-8">
                 <div className="bg-green-50 border border-green-200 rounded-xl p-6">
                   <div className="flex items-center">
-                    <CheckCircle className="w-6 h-6 text-green-500 mr-3" />
+                    <FiCheckCircle className="w-6 h-6 text-green-500 mr-3" />
                     <div>
                       <h3 className="text-lg font-semibold text-green-800">Thanks for signing up!</h3>
                       <p className="text-green-700">We'll notify you when the beta launches.</p>
@@ -241,7 +258,7 @@ export default function Home() {
             {/* Launch Offer */}
             <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-xl p-6 max-w-2xl mx-auto">
               <div className="flex items-center justify-center mb-3">
-                <Gift className="w-5 h-5 text-purple-600 mr-2" />
+                <FiGift className="w-5 h-5 text-purple-600 mr-2" />
                 <span className="text-purple-600 font-semibold">Launch Offer</span>
               </div>
               <p className="text-slate-700 mb-2">
@@ -384,7 +401,7 @@ export default function Home() {
             className="btn-gradient inline-block px-8 py-4 text-white font-semibold rounded-lg text-lg"
           >
             Get Early Access
-            <ArrowRight className="w-5 h-5 ml-2 inline" />
+            <FiArrowRight className="w-5 h-5 ml-2 inline" />
           </a>
         </div>
       </section>
@@ -395,7 +412,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center mb-4 md:mb-0">
               <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <Play className="w-5 h-5 text-white" />
+                <FiPlay className="w-5 h-5 text-white" />
               </div>
               <span className="ml-3 text-xl font-bold">Automation Tool</span>
             </div>
