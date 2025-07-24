@@ -324,6 +324,63 @@ export default function Home() {
 
 
 
+      {/* Video Preview Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+              Create TikToks That Get 👁️ Views
+            </h2>
+            <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
+              Reels made with our tool are <span className="text-purple-600 font-bold">"12x more"</span> likely to get <span className="text-red-500 font-bold">Shared</span>, <span className="text-green-500 font-bold">Saved</span>, and <span className="text-yellow-500 font-bold">Seen.</span>
+            </p>
+          </div>
+
+          {/* Video Screens Container */}
+          <div className="relative flex justify-center items-center">
+            {/* Screen 1 */}
+            <div className="relative transform -rotate-6 hover:rotate-0 transition-all duration-500 hover:scale-105 z-10">
+              <div className="relative w-48 h-72 md:w-64 md:h-96 rounded-3xl overflow-hidden shadow-2xl">
+                {/* GIF Background */}
+                <img 
+                  src="/gif1.gif" 
+                  alt="Video Demo 1" 
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <FiPlay className="w-4 h-4 text-blue-600 ml-0.5" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Screen 2 */}
+            <div className="relative transform rotate-6 hover:rotate-0 transition-all duration-500 hover:scale-105 z-20 -ml-8 md:-ml-12">
+              <div className="relative w-48 h-72 md:w-64 md:h-96 rounded-3xl overflow-hidden shadow-2xl">
+                {/* GIF Background */}
+                <img 
+                  src="/gif2.gif" 
+                  alt="Video Demo 2" 
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
+                    <FiPlay className="w-4 h-4 text-white ml-0.5" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-indigo-50 to-purple-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
