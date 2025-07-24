@@ -90,7 +90,7 @@ export default function Home() {
       id: 'ai-clipping',
       icon: "✂️",
       title: "AI Clipping",
-      description: "Auto-detect viral-worthy moments",
+      description: "Effortlessly finds and cuts viral-worthy moments that are bound to go viral, no timeline scrubbing needed.",
       image: "/ai clipping.gif",
       slides: [
         "/ai clipping.gif",
@@ -102,7 +102,7 @@ export default function Home() {
       id: 'ai-captioning',
       icon: "🏷️",
       title: "AI Captioning",
-      description: "Generate accurate, stylish subtitles",
+      description: "99% best in Market transcription accurate subtitle, Hinglish, Hindi & more supported!",
       image: "/ai captioning.gif",
       slides: [
         "/ai captioning.gif",
@@ -114,7 +114,7 @@ export default function Home() {
       id: 'ai-reframe',
       icon: "👁️",
       title: "AI Reframe",
-      description: "Optimize for different platforms",
+      description: "Smart cropping that keeps faces in frame — perfect vertical Shorts every time.",
       image: "/ai reframe.gif",
       slides: [
         "/ai reframe.gif",
@@ -126,7 +126,7 @@ export default function Home() {
       id: 'ai-titles',
       icon: "⭐",
       title: "AI Titles",
-      description: "Generate engaging video titles",
+      description: "Auto-generates viral titles, tags, and descriptions tailored to your content. No Gibberish robotic titles anymore!",
       image: "/ai titles.jpg",
       slides: [
         "/ai titles.jpg",
@@ -138,7 +138,7 @@ export default function Home() {
       id: 'trim-silence',
       icon: "⚡",
       title: "Trim Silence",
-      description: "Remove dead air automatically",
+      description: "Automatically removes awkward pauses, filler words, and silence! Saving hours with the industry's smartest silence trimmer.",
       image: "/trim silence.jpg",
       slides: [
         "/trim silence.jpg",
@@ -162,7 +162,7 @@ export default function Home() {
               <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
                 <FiPlay className="w-5 h-5 text-white" />
               </div>
-              <span className="ml-3 text-lg md:text-xl font-bold text-slate-900">Automation Tool</span>
+              <span className="ml-3 text-lg md:text-xl font-bold text-slate-900">AI Video Editor</span>
             </div>
             
             <nav className="hidden md:flex items-center space-x-8">
@@ -180,7 +180,16 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white py-6 md:py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Background SVG */}
+        <div className="absolute inset-0 opacity-60">
+          <img 
+            src="/stripes.svg" 
+            alt="" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-slate-600 mb-3 md:mb-4">
               Post more ⚡ Grow faster
@@ -192,7 +201,7 @@ export default function Home() {
             </h1>
             
             <p className="text-lg md:text-xl lg:text-2xl text-slate-600 mb-6 md:mb-8 max-w-3xl mx-auto">
-              Let AutomationTool do the <em className="italic">"Boring"</em> work so you can do what you ❤️
+              AI-powered video editing that finds viral moments, adds captions, reframes content, and generates titles automatically
             </p>
 
             {/* Email Signup Form */}
@@ -293,11 +302,8 @@ export default function Home() {
 
           {/* Description Text */}
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-base md:text-lg text-slate-600">
-              Type an idea and turn it into a ready-to-use video with{' '}
-              <span className="text-purple-600 font-semibold">
-                {aiFeatures.find(f => f.id === activeFeature)?.title}
-              </span>
+            <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
+              {aiFeatures.find(f => f.id === activeFeature)?.description}
             </p>
           </div>
 
@@ -322,10 +328,10 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-r from-indigo-50 to-purple-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            Ready to revolutionize your content creation?
+            Ready to create viral content effortlessly?
           </h2>
           <p className="text-xl text-slate-600 mb-8">
-            Join thousands of creators who are already automating their viral shorts creation.
+            Join creators who are already using AI to find viral moments, add captions, and generate engaging titles automatically.
           </p>
           <a
             href="#signup"
@@ -345,7 +351,7 @@ export default function Home() {
               <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
                 <FiPlay className="w-5 h-5 text-white" />
               </div>
-              <span className="ml-3 text-xl font-bold">Automation Tool</span>
+              <span className="ml-3 text-xl font-bold">AI Video Editor</span>
             </div>
             
             <div className="flex space-x-6 text-sm">
@@ -356,7 +362,7 @@ export default function Home() {
           </div>
           
           <div className="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-400">
-            <p>&copy; 2024 Automation Tool. All rights reserved.</p>
+            <p>&copy; 2024 AI Video Editor. All rights reserved.</p>
           </div>
         </div>
       </footer>
