@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   FiCheckCircle, 
   FiPlay, 
@@ -26,6 +26,27 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [activeFeature, setActiveFeature] = useState('ai-clipping');
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-play slideshow and feature switching
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const activeFeatureData = aiFeatures.find(f => f.id === activeFeature);
+      if (activeFeatureData?.slides) {
+        setCurrentSlide((prev) => 
+          prev < activeFeatureData.slides.length - 1 ? prev + 1 : 0
+        );
+      }
+      
+      // Auto-switch between features every 6 seconds
+      const currentFeatureIndex = aiFeatures.findIndex(f => f.id === activeFeature);
+      const nextFeatureIndex = (currentFeatureIndex + 1) % aiFeatures.length;
+      setActiveFeature(aiFeatures[nextFeatureIndex].id);
+      setCurrentSlide(0);
+    }, 6000); // Change feature every 6 seconds
+
+    return () => clearInterval(interval);
+  }, [activeFeature]);
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -67,39 +88,63 @@ export default function Home() {
   const aiFeatures = [
     {
       id: 'ai-clipping',
-      icon: <FiScissors className="w-5 h-5" />,
+      icon: "✂️",
       title: "AI Clipping",
-      description: "Auto-detect viral-worthy moments"
+      description: "Auto-detect viral-worthy moments",
+      image: "/ai clipping.gif",
+      slides: [
+        "/ai clipping.gif",
+        "/ai-analysis.jpg",
+        "/upload-interface.png"
+      ]
     },
     {
       id: 'ai-captioning',
-      icon: <FiTag className="w-5 h-5" />,
+      icon: "🏷️",
       title: "AI Captioning",
-      description: "Generate accurate, stylish subtitles"
+      description: "Generate accurate, stylish subtitles",
+      image: "/ai captioning.gif",
+      slides: [
+        "/ai captioning.gif",
+        "/different subs.gif",
+        "/upload-interface.png"
+      ]
     },
     {
       id: 'ai-reframe',
-      icon: <FiEye className="w-5 h-5" />,
+      icon: "👁️",
       title: "AI Reframe",
-      description: "Optimize for different platforms"
+      description: "Optimize for different platforms",
+      image: "/ai reframe.gif",
+      slides: [
+        "/ai reframe.gif",
+        "/ai-analysis.jpg",
+        "/upload-interface.png"
+      ]
     },
     {
-      id: 'ai-broll',
-      icon: <FiPlay className="w-5 h-5" />,
-      title: "AI B-Roll",
-      description: "Auto-generate complementary footage"
+      id: 'ai-titles',
+      icon: "⭐",
+      title: "AI Titles",
+      description: "Generate engaging video titles",
+      image: "/ai titles.jpg",
+      slides: [
+        "/ai titles.jpg",
+        "/ai-analysis.jpg",
+        "/upload-interface.png"
+      ]
     },
     {
-      id: 'ai-audio',
-      icon: <FiZap className="w-5 h-5" />,
-      title: "AI Audio Enhance",
-      description: "Crystal clear audio optimization"
-    },
-    {
-      id: 'ai-voiceover',
-      icon: <FiStar className="w-5 h-5" />,
-      title: "AI Voice-over",
-      description: "Natural-sounding voice synthesis"
+      id: 'trim-silence',
+      icon: "⚡",
+      title: "Trim Silence",
+      description: "Remove dead air automatically",
+      image: "/trim silence.jpg",
+      slides: [
+        "/trim silence.jpg",
+        "/ai-analysis.jpg",
+        "/upload-interface.png"
+      ]
     }
   ];
 
@@ -223,43 +268,52 @@ export default function Home() {
 
 
 
-      {/* AI Features Row */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              AI-Powered Video Automation
-            </h2>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Every creator is becoming video-first. Automation Tool helps your content stay top of mind.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      {/* AI Features Section - Simple Photo Slideshow */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Top Navigation Bar */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
             {aiFeatures.map((feature) => (
               <button
                 key={feature.id}
-                onClick={() => setActiveFeature(feature.id)}
-                className={`feature-card text-left ${
-                  activeFeature === feature.id ? 'active' : ''
+                onClick={() => {
+                  setActiveFeature(feature.id);
+                  setCurrentSlide(0);
+                }}
+                className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  activeFeature === feature.id
+                    ? 'bg-purple-100 text-purple-700 border-2 border-purple-300'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border-2 border-transparent'
                 }`}
               >
-                <div className={`mb-3 ${activeFeature === feature.id ? 'text-white' : 'text-slate-400'}`}>
-                  {feature.icon}
-                </div>
-                <h3 className={`font-semibold mb-1 ${
-                  activeFeature === feature.id ? 'text-white' : 'text-white'
-                }`}>
-                  {feature.title}
-                </h3>
-                <p className={`text-sm ${
-                  activeFeature === feature.id ? 'text-slate-300' : 'text-slate-400'
-                }`}>
-                  {feature.description}
-                </p>
+                <span className="mr-2">{feature.icon}</span>
+                {feature.title}
               </button>
             ))}
           </div>
+
+          {/* Description Text */}
+          <div className="text-center mb-8">
+            <p className="text-lg text-slate-600">
+              Type an idea and turn it into a ready-to-use video with{' '}
+              <span className="text-purple-600 font-semibold">
+                {aiFeatures.find(f => f.id === activeFeature)?.title}
+              </span>
+            </p>
+          </div>
+
+                     {/* Simple Photo Display */}
+           <div className="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden max-w-2xl mx-auto">
+             <div className="relative aspect-[3/2] bg-slate-100">
+               {aiFeatures.find(f => f.id === activeFeature)?.slides && (
+                 <img 
+                   src={aiFeatures.find(f => f.id === activeFeature)?.slides[currentSlide]}
+                   alt={aiFeatures.find(f => f.id === activeFeature)?.title}
+                   className="w-full h-full object-cover transition-opacity duration-500"
+                 />
+               )}
+             </div>
+           </div>
         </div>
       </section>
 
