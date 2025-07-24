@@ -17,7 +17,9 @@ import {
   FiHeart, 
   FiTarget, 
   FiShield, 
-  FiGift 
+  FiGift,
+  FiX,
+  FiXCircle
 } from 'react-icons/fi';
 
 export default function Home() {
@@ -348,6 +350,12 @@ export default function Home() {
                   className="w-full h-full object-cover"
                 />
                 
+                {/* View Count Overlay */}
+                <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm rounded-lg px-2 py-1 flex items-center space-x-1">
+                  <FiPlay className="w-3 h-3 text-white" />
+                  <span className="text-white text-xs font-medium">273K</span>
+                </div>
+                
                 {/* Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
@@ -367,6 +375,12 @@ export default function Home() {
                   className="w-full h-full object-cover"
                 />
                 
+                {/* View Count Overlay */}
+                <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm rounded-lg px-2 py-1 flex items-center space-x-1">
+                  <FiPlay className="w-3 h-3 text-white" />
+                  <span className="text-white text-xs font-medium">3.5M</span>
+                </div>
+                
                 {/* Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
@@ -378,6 +392,297 @@ export default function Home() {
           </div>
 
 
+                  </div>
+        </section>
+
+      {/* Comparison Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Why Choose Our AI Video Editor?
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              See the difference AI-powered editing makes for your content creation
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {/* With Our Tool */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-green-200">
+              <div className="text-center mb-6">
+                <div className="text-4xl mb-3">😎</div>
+                <h3 className="text-xl font-bold text-slate-900">With Our AI Tool</h3>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700"><strong>Watermark-free</strong> (even on free trial)</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700">Finds <strong>viral clips</strong> — no scrubbing</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700"><strong>99% accurate</strong> multilingual captions</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700">Auto-generates <strong>viral titles & tags</strong></span>
+                </li>
+                <li className="flex items-start">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700"><strong>Instantly</strong> removes silence & fillers</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700"><strong>12x more reach</strong>, <strong>10x less effort</strong></span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Traditional Tools */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-orange-200">
+              <div className="text-center mb-6">
+                <div className="text-4xl mb-3">😩</div>
+                <h3 className="text-xl font-bold text-slate-900">Traditional Tools</h3>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">Force you to pay just to remove watermark</span>
+                </li>
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">Scrub. Cut. Repeat.</span>
+                </li>
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">Captions miss half the words</span>
+                </li>
+
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">Robotic, boring titles</span>
+                </li>
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">Silence trimming = pain</span>
+                </li>
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">1 short = 2 hours of work</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Current Situation */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-red-200">
+              <div className="text-center mb-6">
+                <div className="text-4xl mb-3">😵</div>
+                <h3 className="text-xl font-bold text-slate-900">Your Current Struggle</h3>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">Can't test tools properly without paying first</span>
+                </li>
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">Stuck editing for hours</span>
+                </li>
+
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">Low views, low motivation</span>
+                </li>
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">Manually doing everything</span>
+                </li>
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">Quality's hit or miss</span>
+                </li>
+                <li className="flex items-start">
+                  <FiXCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-700">Feels like too much effort for too little growth</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Plans that match your needs
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              Our pricing is simple, transparent and adapts to the size of your brand.
+            </p>
+          </div>
+
+
+
+          {/* Pricing Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+            {/* Early Creator Plan */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300">
+              <div className="text-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <FiUsers className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Early Creator</h3>
+                <p className="text-slate-600 text-sm">For solo creators getting started</p>
+              </div>
+              
+              <div className="text-center mb-6">
+                <div className="flex items-center justify-center mb-2">
+                  <span className="text-slate-400 line-through text-lg">$9/mo</span>
+                  <span className="text-3xl font-bold text-slate-900 ml-2">$0</span>
+                  <span className="text-slate-600 ml-1">today</span>
+                </div>
+                <p className="text-sm text-slate-500">Free during beta</p>
+              </div>
+
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700">100 credits/month</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700">Auto-detect viral clips</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700">99% accurate multilingual subtitles</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700">Smart silence & filler removal</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700">Viral title + tag generator</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700">No watermark (even now)</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-700">Export or auto-post to Shorts, Reels, TikTok</span>
+                </li>
+              </ul>
+
+              <button className="w-full btn-gradient py-3 rounded-lg font-semibold text-white hover:transform hover:scale-105 transition-all duration-300">
+                Free now — no card needed
+              </button>
+            </div>
+
+            {/* Beta Pro Plan - Highlighted */}
+            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 shadow-xl border-2 border-blue-500 relative hover:shadow-2xl transition-all duration-300">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">Most Popular</span>
+              </div>
+              
+              <div className="text-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <FiStar className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Beta Pro</h3>
+                <p className="text-slate-300 text-sm">For power users & small teams</p>
+              </div>
+              
+              <div className="text-center mb-6">
+                <div className="flex items-center justify-center mb-2">
+                  <span className="text-slate-400 line-through text-lg">$19/mo</span>
+                  <span className="text-3xl font-bold text-white ml-2">$0</span>
+                  <span className="text-slate-300 ml-1">today</span>
+                </div>
+                <p className="text-sm text-slate-400">Free during beta</p>
+              </div>
+
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-200">250 credits/month</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-200">Everything in Creator</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-200">Team access (2 seats)</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-200">Custom branding & fonts</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-200">Post scheduling</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <span className="text-slate-200">Priority processing</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-2xl mr-3 flex-shrink-0">🚀</span>
+                  <span className="text-slate-200 font-bold">Bonus 2 months free after launch</span>
+                </li>
+              </ul>
+
+              <button className="w-full btn-gradient py-3 rounded-lg font-semibold text-white hover:transform hover:scale-105 transition-all duration-300">
+                Get early access
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
