@@ -98,12 +98,16 @@ export default function Home() {
 
     setIsLoading(true);
     
-    // Simulate API call - replace with your actual backend integration
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send email to Make.com webhook
+      await fetch('https://hook.us2.make.com/8hamrtcq1dj54cfvmrpwb72mok8lb417', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
       
-      // Here you would typically send the email to your backend
-      // For now, we'll just simulate success
       console.log('Email submitted:', email);
       setIsSubmitted(true);
       setEmail('');
@@ -270,17 +274,15 @@ export default function Home() {
                 </form>
               </div>
             ) : (
-              <div className="max-w-2xl mx-auto mb-6 md:mb-8">
-                <div className="bg-green-50 border border-green-200 rounded-xl p-4 md:p-6">
-                  <div className="flex items-center">
-                    <FiCheckCircle className="w-5 h-5 md:w-6 md:h-6 text-green-500 mr-3 flex-shrink-0" />
-                    <div>
-                      <h3 className="text-base md:text-lg font-semibold text-green-800">Thanks for signing up!</h3>
-                      <p className="text-sm md:text-base text-green-700">We'll notify you when the beta launches.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                             <div className="max-w-2xl mx-auto mb-6 md:mb-8">
+                 <div className="bg-green-50 border border-green-200 rounded-xl p-4 md:p-6">
+                   <div className="text-center">
+                     <div className="text-4xl mb-3">📧</div>
+                     <h3 className="text-base md:text-lg font-semibold text-green-800 mb-2">Thanks for signing up!</h3>
+                     <p className="text-sm md:text-base text-green-700">Make sure to check your inbox and spam folder</p>
+                   </div>
+                 </div>
+               </div>
             )}
 
             {/* P.S. Text */}
