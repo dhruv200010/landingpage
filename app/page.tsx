@@ -200,15 +200,14 @@ export default function Home() {
             <div className="flex items-center space-x-2 md:space-x-4">
               <a href="#features" className="nav-link text-slate-600 hover:text-slate-900 hidden sm:block">Features</a>
               <a href="#pricing" className="nav-link text-slate-600 hover:text-slate-900 hidden sm:block">Pricing</a>
-              <a href="#login" className="px-2 md:px-4 py-2 border border-slate-300 rounded-lg text-slate-700 hover:bg-slate-50 text-xs md:text-sm">Login</a>
-              <a href="#signup" className="btn-gradient px-2 md:px-4 py-2 rounded-lg text-white text-xs md:text-sm">Sign Up</a>
+              <a href="#hero" className="btn-gradient px-2 md:px-4 py-2 rounded-lg text-white text-xs md:text-sm">Sign Up</a>
             </div>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white py-6 md:py-8">
+      <section id="hero" className="relative overflow-hidden bg-white py-6 md:py-8">
         {/* Background SVG */}
         <div className="absolute inset-0 opacity-60">
           <img 
@@ -305,7 +304,7 @@ export default function Home() {
       </section>
 
       {/* AI Features Section - Simple Photo Slideshow */}
-      <section className="py-4 md:py-6 bg-white">
+      <section id="features" className="py-4 md:py-6 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Navigation Bar */}
           <div className="flex flex-wrap justify-center gap-2 md:gap-2 mb-6 md:mb-8">
@@ -555,7 +554,7 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-16 bg-white">
+      <section id="pricing" className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
@@ -626,17 +625,22 @@ export default function Home() {
                   </div>
                   <span className="text-slate-700">No watermark (even now)</span>
                 </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                    <span className="text-white text-xs font-bold">✓</span>
-                  </div>
-                  <span className="text-slate-700">Export or auto-post to Shorts, Reels, TikTok</span>
-                </li>
-              </ul>
+                                 <li className="flex items-center">
+                   <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                     <span className="text-white text-xs font-bold">✓</span>
+                   </div>
+                   <span className="text-slate-700">Export or auto-post to Shorts, Reels, TikTok</span>
+                 </li>
+                                 </ul>
 
-              <button className="w-full btn-gradient py-3 rounded-lg font-semibold text-white hover:transform hover:scale-105 transition-all duration-300">
-                Free now — no card needed
-              </button>
+                             <div className="mt-8">
+                 <a href="#hero" className="block">
+                   <button className="w-full btn-gradient py-3 rounded-lg font-semibold text-white hover:transform hover:scale-105 transition-all duration-300">
+                     Free now
+                   </button>
+                 </a>
+                 <p className="text-slate-500 text-sm italic text-center mt-2">* No credit card required</p>
+               </div>
             </div>
 
             {/* Beta Pro Plan - Highlighted */}
@@ -662,53 +666,58 @@ export default function Home() {
                 <p className="text-sm text-slate-400">Free during beta</p>
               </div>
 
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                    <span className="text-white text-xs font-bold">✓</span>
-                  </div>
-                  <span className="text-slate-200">250 credits/month</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                    <span className="text-white text-xs font-bold">✓</span>
-                  </div>
-                  <span className="text-slate-200">Everything in Creator</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                    <span className="text-white text-xs font-bold">✓</span>
-                  </div>
-                  <span className="text-slate-200">Team access (2 seats)</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                    <span className="text-white text-xs font-bold">✓</span>
-                  </div>
-                  <span className="text-slate-200">Custom branding & fonts</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                    <span className="text-white text-xs font-bold">✓</span>
-                  </div>
-                  <span className="text-slate-200">Post scheduling</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                    <span className="text-white text-xs font-bold">✓</span>
-                  </div>
-                  <span className="text-slate-200">Priority processing</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="text-2xl mr-3 flex-shrink-0">🚀</span>
-                  <span className="text-slate-200 font-bold">Bonus 2 months free after launch</span>
-                </li>
-              </ul>
+                             <ul className="space-y-3 mb-6">
+                 <li className="flex items-center">
+                   <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                     <span className="text-white text-xs font-bold">✓</span>
+                   </div>
+                   <span className="text-slate-200">250 credits/month</span>
+                 </li>
+                 <li className="flex items-center">
+                   <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                     <span className="text-white text-xs font-bold">✓</span>
+                   </div>
+                   <span className="text-slate-200">Everything in Creator</span>
+                 </li>
+                 <li className="flex items-center">
+                   <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                     <span className="text-white text-xs font-bold">✓</span>
+                   </div>
+                   <span className="text-slate-200">Team access (2 seats)</span>
+                 </li>
+                 <li className="flex items-center">
+                   <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                     <span className="text-white text-xs font-bold">✓</span>
+                   </div>
+                   <span className="text-slate-200">Custom branding & fonts</span>
+                 </li>
+                 <li className="flex items-center">
+                   <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                     <span className="text-white text-xs font-bold">✓</span>
+                   </div>
+                   <span className="text-slate-200">Post scheduling</span>
+                 </li>
+                 <li className="flex items-center">
+                   <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                     <span className="text-white text-xs font-bold">✓</span>
+                   </div>
+                   <span className="text-slate-200">Priority processing</span>
+                 </li>
+                 <li className="flex items-center">
+                   <span className="text-2xl mr-3 flex-shrink-0">🚀</span>
+                   <span className="text-slate-200 font-bold">Bonus 2 months free after launch</span>
+                 </li>
+               </ul>
 
-              <button className="w-full btn-gradient py-3 rounded-lg font-semibold text-white hover:transform hover:scale-105 transition-all duration-300">
-                Get early access
-              </button>
-            </div>
+               <div className="mt-2">
+                <a href="#hero">
+                  <button className="w-full btn-gradient py-3 rounded-lg font-semibold text-white hover:transform hover:scale-105 transition-all duration-300">
+                    Get early access
+                  </button>
+                </a>
+                <p className="text-slate-400 text-sm italic text-center mt-2">No credit card required</p>
+              </div>
+             </div>
           </div>
         </div>
       </section>
@@ -799,10 +808,10 @@ export default function Home() {
           </div>
           
           <a
-            href="#signup"
+            href="#hero"
             className="btn-gradient inline-block px-8 py-4 text-white font-semibold rounded-lg text-lg"
           >
-            Get Early Access
+            Get Access Now
             <FiArrowRight className="w-5 h-5 ml-2 inline" />
           </a>
         </div>
