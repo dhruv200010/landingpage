@@ -29,6 +29,33 @@ export default function Home() {
   const [error, setError] = useState('');
   const [activeFeature, setActiveFeature] = useState('ai-clipping');
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [countdown, setCountdown] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  // Countdown timer effect
+  useEffect(() => {
+    const targetDate = new Date('August 3, 2025 00:00:00').getTime();
+    
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      
+      if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        setCountdown({ days, hours, minutes, seconds });
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Auto-play slideshow and feature switching
   useEffect(() => {
@@ -690,11 +717,87 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-r from-indigo-50 to-purple-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            Ready to create viral content effortlessly?
+            Ready to take your channel to the next level?
           </h2>
           <p className="text-xl text-slate-600 mb-8">
-            Join creators who are already using AI to find viral moments, add captions, and generate engaging titles automatically.
+            Join 100+ beta users using <strong>AI</strong> to clip <strong>highlights</strong>, auto-caption, and boost <strong>reach</strong> daily.
           </p>
+          
+          {/* Countdown Timer */}
+          <div className="mb-8">
+            <div className="bg-white rounded-3xl p-4 md:p-8 shadow-2xl border border-gray-200 mb-6">
+              <div className="text-center mb-4 md:mb-6">
+                <div className="flex items-center justify-center mb-2 md:mb-3">
+                  <FiClock className="w-5 h-5 md:w-7 md:h-7 text-black mr-2 md:mr-3" />
+                  <span className="text-black font-bold text-lg md:text-xl">⏰ LIMITED TIME OFFER</span>
+                </div>
+                <p className="text-gray-600 text-sm md:text-base">Get early access before launch pricing kicks in</p>
+              </div>
+              
+              <div className="flex justify-center items-end space-x-3 md:space-x-4 lg:space-x-6">
+                {/* Days */}
+                <div className="flex flex-col items-center">
+                  <div className="flex space-x-0.5 md:space-x-1 lg:space-x-2">
+                    {[...countdown.days.toString().padStart(2, '0')].map((digit, i) => (
+                      <div key={i} className="relative bg-black h-16 w-8 md:h-20 md:w-12 lg:h-24 lg:w-14 xl:h-32 xl:w-20 rounded-md md:rounded-lg flex items-center justify-center border border-gray-800 shadow-lg mx-0.5">
+                        <span className="font-mono font-extrabold text-2xl md:text-4xl lg:text-5xl xl:text-7xl text-white z-10 select-none tracking-wider" style={{letterSpacing: '0.08em', lineHeight: '1.1', fontStretch: 'expanded', transform: 'scaleY(1.4)'}}>
+                          {digit}
+                        </span>
+                        <div className="absolute left-1 right-1 top-1/2 h-0.5 bg-gray-400/40 rounded-full -translate-y-1/2" />
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-gray-500 text-[8px] md:text-[10px] lg:text-xs font-bold uppercase tracking-wider mt-1">Days</span>
+                </div>
+                
+                {/* Hours */}
+                <div className="flex flex-col items-center">
+                  <div className="flex space-x-0.5 md:space-x-1 lg:space-x-2">
+                    {[...countdown.hours.toString().padStart(2, '0')].map((digit, i) => (
+                      <div key={i} className="relative bg-black h-16 w-8 md:h-20 md:w-12 lg:h-24 lg:w-14 xl:h-32 xl:w-20 rounded-md md:rounded-lg flex items-center justify-center border border-gray-800 shadow-lg mx-0.5">
+                        <span className="font-mono font-extrabold text-2xl md:text-4xl lg:text-5xl xl:text-7xl text-white z-10 select-none tracking-wider" style={{letterSpacing: '0.08em', lineHeight: '1.1', fontStretch: 'expanded', transform: 'scaleY(1.4)'}}>
+                          {digit}
+                        </span>
+                        <div className="absolute left-1 right-1 top-1/2 h-0.5 bg-gray-400/40 rounded-full -translate-y-1/2" />
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-gray-500 text-[8px] md:text-[10px] lg:text-xs font-bold uppercase tracking-wider mt-1">Hours</span>
+                </div>
+                
+                {/* Minutes */}
+                <div className="flex flex-col items-center">
+                  <div className="flex space-x-0.5 md:space-x-1 lg:space-x-2">
+                    {[...countdown.minutes.toString().padStart(2, '0')].map((digit, i) => (
+                      <div key={i} className="relative bg-black h-16 w-8 md:h-20 md:w-12 lg:h-24 lg:w-14 xl:h-32 xl:w-20 rounded-md md:rounded-lg flex items-center justify-center border border-gray-800 shadow-lg mx-0.5">
+                        <span className="font-mono font-extrabold text-2xl md:text-4xl lg:text-5xl xl:text-7xl text-white z-10 select-none tracking-wider" style={{letterSpacing: '0.08em', lineHeight: '1.1', fontStretch: 'expanded', transform: 'scaleY(1.4)'}}>
+                          {digit}
+                        </span>
+                        <div className="absolute left-1 right-1 top-1/2 h-0.5 bg-gray-400/40 rounded-full -translate-y-1/2" />
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-gray-500 text-[8px] md:text-[10px] lg:text-xs font-bold uppercase tracking-wider mt-1">Minutes</span>
+                </div>
+                
+                {/* Seconds */}
+                <div className="flex flex-col items-center">
+                  <div className="flex space-x-0.5 md:space-x-1 lg:space-x-2">
+                    {[...countdown.seconds.toString().padStart(2, '0')].map((digit, i) => (
+                      <div key={i} className="relative bg-black h-16 w-8 md:h-20 md:w-12 lg:h-24 lg:w-14 xl:h-32 xl:w-20 rounded-md md:rounded-lg flex items-center justify-center border border-gray-800 shadow-lg mx-0.5">
+                        <span className="font-mono font-extrabold text-2xl md:text-4xl lg:text-5xl xl:text-7xl text-white z-10 select-none tracking-wider" style={{letterSpacing: '0.08em', lineHeight: '1.1', fontStretch: 'expanded', transform: 'scaleY(1.4)'}}>
+                          {digit}
+                        </span>
+                        <div className="absolute left-1 right-1 top-1/2 h-0.5 bg-gray-400/40 rounded-full -translate-y-1/2" />
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-gray-500 text-[8px] md:text-[10px] lg:text-xs font-bold uppercase tracking-wider mt-1">Seconds</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <a
             href="#signup"
             className="btn-gradient inline-block px-8 py-4 text-white font-semibold rounded-lg text-lg"
