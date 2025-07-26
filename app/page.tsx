@@ -193,11 +193,13 @@ export default function Home() {
           <div className="bg-white/30 backdrop-blur-2xl rounded-full shadow-lg border border-white/30 px-4 md:px-6 py-3 md:py-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-3 md:space-x-4">
-                <img 
-                  src="/headerlogo.png" 
-                  alt="AI Video Editor Logo" 
-                  className="max-h-[26px] sm:max-h-[40px] object-contain"
-                />
+                <a href="#hero" className="hover:opacity-80 transition-opacity">
+                  <img 
+                    src="/headerlogo.png" 
+                    alt="AI Video Editor Logo" 
+                    className="max-h-[26px] sm:max-h-[40px] object-contain"
+                  />
+                </a>
               </div>
               
               <nav className="hidden md:flex items-center space-x-8">
@@ -292,17 +294,56 @@ export default function Home() {
             </p>
 
             {/* Launch Offer */}
-            <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-xl p-4 md:p-6 max-w-2xl mx-auto">
-              <div className="flex items-center justify-center mb-2 md:mb-3">
-                <FiGift className="w-4 h-4 md:w-5 md:h-5 text-purple-600 mr-2 flex-shrink-0" />
-                <span className="text-purple-600 font-semibold text-sm md:text-base">Launch Offer</span>
+            <div className="relative overflow-hidden bg-gradient-to-r from-slate-50 via-blue-50 to-purple-50 rounded-3xl p-6 md:p-8 max-w-3xl mx-auto shadow-xl border border-slate-200">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute top-0 left-0 w-32 h-32 bg-purple-300 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 right-0 w-40 h-40 bg-blue-300 rounded-full blur-3xl"></div>
               </div>
-              <p className="text-slate-700 mb-2 text-sm md:text-base">
-                <strong>Free until launch.</strong>
-              </p>
-              <p className="text-slate-600 text-xs md:text-sm">
-                🎁 Bonus: Get 2 months of Pro access after launch — only if you sign up early.
-              </p>
+              
+              {/* Content */}
+              <div className="relative z-10">
+                {/* Header */}
+                <div className="flex items-center justify-center mb-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="relative">
+                      <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                        <FiGift className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
+                        <span className="text-white text-xs font-bold">🔥</span>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-slate-900 font-bold text-lg md:text-xl">Join the Beta Today</h3>
+                      <p className="text-slate-600 text-sm">Get unlimited access during development</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Benefits Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="flex items-center space-x-3 bg-white/80 rounded-xl p-3 backdrop-blur-sm border border-slate-200">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">✓</span>
+                    </div>
+                    <div>
+                      <p className="text-slate-900 font-semibold text-sm">No Credit Card</p>
+                      <p className="text-slate-600 text-xs">Required</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3 bg-white/80 rounded-xl p-3 backdrop-blur-sm border border-slate-200">
+                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">✓</span>
+                    </div>
+                    <div>
+                      <p className="text-slate-900 font-semibold text-sm">2 Months Pro</p>
+                      <p className="text-slate-600 text-xs">After Launch</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -563,7 +604,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Plans that match your needs
+              Price Match Guaranteed
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
               Our pricing is simple, transparent and adapts to the size of your brand.
