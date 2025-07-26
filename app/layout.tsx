@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Automation Tool - AI-Powered Video Automation",
+  title: "MakeReels - AI-Powered Video Automation",
   description: "Turn your long-form videos into multiple viral shorts with AI. Get early access to our beta and enjoy 2 months free usage after launch.",
   keywords: "AI video automation, viral shorts, video editing, content creation, social media",
 };
