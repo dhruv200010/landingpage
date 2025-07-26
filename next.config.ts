@@ -1,7 +1,6 @@
 import type { NextConfig } from 'next';
-import type { Header } from 'next/dist/lib/load-custom-routes';
 
-const securityHeaders: Header[] = [
+const securityHeaders = [
   {
     key: 'Content-Security-Policy',
     value: `
@@ -21,7 +20,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)', // applies to all routes
+        source: '/(.*)',
         headers: securityHeaders,
       },
     ];
