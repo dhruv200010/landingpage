@@ -186,17 +186,18 @@ export default function Home() {
 
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header */}
       <header className="sticky top-3 md:top-4 z-50 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="bg-white/30 backdrop-blur-2xl rounded-full shadow-lg border border-white/30 px-4 md:px-6 py-3 md:py-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-3 md:space-x-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-                  <FiPlay className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-lg md:text-xl font-bold text-slate-900">AI Video Editor</span>
+                <img 
+                  src="/headerlogo.png" 
+                  alt="AI Video Editor Logo" 
+                  className="max-h-[26px] sm:max-h-[40px] object-contain"
+                />
               </div>
               
               <nav className="hidden md:flex items-center space-x-8">
@@ -822,25 +823,28 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
+      <footer className="bg-slate-900 text-white py-12 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <FiPlay className="w-5 h-5 text-white" />
-              </div>
-              <span className="ml-3 text-xl font-bold">AI Video Editor</span>
-            </div>
-            
-            <div className="flex space-x-6 text-sm">
-              <a href="#" className="hover:text-indigo-400 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-indigo-400 transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-indigo-400 transition-colors">Contact</a>
-            </div>
+
+          {/* Navigation links centered */}
+          <div className="flex justify-center space-x-6 text-sm mb-8">
+            <a href="/privacy" className="hover:text-indigo-400 transition-colors">Privacy Policy</a>
+            <a href="/terms" className="hover:text-indigo-400 transition-colors">Terms of Service</a>
+            <a href="/contact" className="hover:text-indigo-400 transition-colors">Contact</a>
           </div>
-          
-          <div className="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-400">
-            <p>&copy; 2024 AI Video Editor. All rights reserved.</p>
+
+          {/* Full-width footer logo */}
+          <div className="w-full px-0 mb-6">
+            <img
+              src="/footerlogo.png"
+              alt="Makereels Logo"
+              className="w-full object-cover"
+            />
+          </div>
+
+          {/* Copyright */}
+          <div className="border-t border-slate-800 pt-4 text-center text-sm text-slate-400">
+            <p>&copy; 2025 Makereels. All rights reserved.</p>
           </div>
         </div>
       </footer>
