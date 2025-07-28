@@ -243,31 +243,23 @@ export default function Home() {
 
             {/* Email Signup Form */}
             {!isSubmitted ? (
-              <div className="max-w-2xl mx-auto mb-6 md:mb-8">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="bg-slate-800 rounded-2xl p-1 flex flex-col sm:flex-row items-center">
-                    <div className="flex-1 flex items-center px-3 py-2 w-full">
-                      <FiPlay className="w-5 h-5 text-slate-400 mr-2 flex-shrink-0" />
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Drop your email to join the beta"
-                        className="flex-1 bg-transparent text-white placeholder-slate-400 outline-none text-base md:text-lg min-w-0"
-                        disabled={isLoading}
-                      />
-                    </div>
+              <div className="max-w-md mx-auto mb-6 md:mb-8">
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Write your email here"
+                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-base placeholder:text-black text-black"
+                      disabled={isLoading}
+                    />
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="bg-white text-slate-900 px-4 md:px-6 py-2 rounded-xl font-semibold text-base md:text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center hover:bg-slate-50 transition-colors w-full sm:w-auto mt-2 sm:mt-0 flex-shrink-0"
+                      className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isLoading ? 'Signing up...' : (
-                        <>
-                          Get Early Access
-                          <FiArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 flex-shrink-0" />
-                        </>
-                      )}
+                      {isLoading ? 'Signing up...' : 'Join Beta'}
                     </button>
                   </div>
                   
