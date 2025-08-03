@@ -158,35 +158,24 @@ export default function VideoUpload() {
     setEmailPrompt(prev => ({ ...prev, isSubmitting: true }));
     
     try {
-      // First, upload the video to Dropbox with email as filename
-      if (uploadStatus.file) {
-        console.log('Uploading video to Dropbox with email as filename...');
-        const formData = new FormData();
-        
-        // Create a new file with email as the name
-        const emailSanitized = emailPrompt.email.replace(/[^a-zA-Z0-9]/g, '_');
-        const fileExtension = uploadStatus.file.name.split('.').pop();
-        const newFileName = `${emailSanitized}.${fileExtension}`;
-        
-        // Create a new file object with the email-based name
-        const renamedFile = new File([uploadStatus.file], newFileName, {
-          type: uploadStatus.file.type
-        });
-        
-        formData.append('file', renamedFile);
-        
-        const uploadResponse = await fetch('/api/dropbox/upload', {
-          method: 'POST',
-          body: formData
-        });
+      // Dummy upload - just call the endpoint without sending file data
+      console.log('Calling dummy upload endpoint...');
+      const formData = new FormData();
+      
+      // Optionally, you can skip sending the file entirely:
+      // formData.append('file', uploadStatus.file);
+      
+      const uploadResponse = await fetch('/api/dropbox/upload', {
+        method: 'POST',
+        body: formData
+      });
 
-        if (!uploadResponse.ok) {
-          const errorData = await uploadResponse.json();
-          throw new Error(errorData.error || 'Video upload failed');
-        }
-
-        console.log('Video uploaded successfully to Dropbox');
+      if (!uploadResponse.ok) {
+        const errorData = await uploadResponse.json();
+        throw new Error(errorData.error || 'Upload request failed');
       }
+
+      console.log('Dummy upload completed successfully');
 
       // Then send email to Make.com webhook
       await fetch('https://hook.us2.make.com/8hamrtcq1dj54cfvmrpwb72mok8lb417', {
@@ -290,10 +279,10 @@ export default function VideoUpload() {
               <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
                 <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
               </div>
-              <div className="text-left">
-                <h3 className="font-bold text-gray-900 text-lg">Video ready for processing!</h3>
-                <p className="text-sm text-gray-600">Submit your email to receive your viral shorts</p>
-              </div>
+                          <div className="text-left">
+              <h3 className="font-bold text-gray-900 text-lg">Video ready for processing!</h3>
+              <p className="text-sm text-gray-600">Submit your email to receive your viral shorts</p>
+            </div>
             </div>
           </div>
           

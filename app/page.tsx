@@ -252,7 +252,7 @@ export default function Home() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Write your email here"
-                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-base placeholder:text-black text-black"
+                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-base placeholder:text-black text-black bg-white"
                       disabled={isLoading}
                     />
                     <button
@@ -313,12 +313,7 @@ export default function Home() {
                 <div className="flex items-center justify-center mb-4">
                   <div className="flex items-center space-x-3">
                     <div className="relative">
-                      <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
-                        <FiGift className="w-5 h-5 text-white" />
-                      </div>
-                      <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">🔥</span>
-                      </div>
+                      <span className="text-4xl">🎁</span>
                     </div>
                     <div>
                       <h3 className="text-slate-900 font-bold text-lg md:text-xl">Join the Beta Today</h3>
@@ -711,11 +706,11 @@ export default function Home() {
               
               <div className="text-center mb-6">
                 <div className="flex items-center justify-center mb-2">
-                  <span className="text-slate-400 line-through text-lg">$19/mo</span>
-                  <span className="text-3xl font-bold text-white ml-2">$0</span>
+                  <span className="text-slate-400 line-through text-lg">$57/mo</span>
+                  <span className="text-3xl font-bold text-white ml-2">$19</span>
                   <span className="text-slate-300 ml-1">today</span>
                 </div>
-                <p className="text-sm text-slate-400">Free during beta</p>
+                <p className="text-sm text-slate-400">Best in the Class technology</p>
               </div>
 
                              <ul className="space-y-3 mb-6">
@@ -757,17 +752,16 @@ export default function Home() {
                  </li>
                  <li className="flex items-center">
                    <span className="text-2xl mr-3 flex-shrink-0">🚀</span>
-                   <span className="text-slate-200 font-bold">Bonus 2 months free after launch</span>
+                   <span className="text-slate-200 font-bold">Get 2 months free</span>
                  </li>
                </ul>
 
                <div className="mt-2">
                 <a href="#hero">
                   <button className="w-full btn-gradient py-3 rounded-lg font-semibold text-white hover:transform hover:scale-105 transition-all duration-300">
-                    Get early access
+                    Pay now
                   </button>
                 </a>
-                <p className="text-slate-400 text-sm italic text-center mt-2">No credit card required</p>
               </div>
              </div>
           </div>
