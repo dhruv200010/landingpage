@@ -21,6 +21,7 @@ import {
   FiX,
   FiXCircle
 } from 'react-icons/fi';
+import VideoUpload from './components/VideoUpload';
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -38,7 +39,7 @@ export default function Home() {
 
   // Countdown timer effect
   useEffect(() => {
-    const targetDate = new Date('August 3, 2025 00:00:00').getTime();
+    const targetDate = new Date('August 14, 2025 00:00:00').getTime();
     
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -279,6 +280,19 @@ export default function Home() {
                  </div>
                </div>
             )}
+
+            {/* Video Upload Section */}
+            <div className="max-w-2xl mx-auto mb-6 md:mb-8">
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-4 md:p-6">
+                <div className="text-center mb-4">
+                  <div className="text-3xl mb-2">🎬</div>
+                  <h3 className="text-base md:text-lg font-semibold text-slate-900 mb-1">Try Our AI Video Editor</h3>
+                  <p className="text-sm text-slate-600">Upload your video and see the magic happen</p>
+                </div>
+                
+                <VideoUpload />
+              </div>
+            </div>
 
             {/* P.S. Text */}
             <p className="text-slate-500 text-xs -mt-4 md:-mt-6 mb-4 md:mb-6">
