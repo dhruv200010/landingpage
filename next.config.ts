@@ -8,6 +8,7 @@ const securityHeaders = [
       script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://*.hotjar.com https://*.hotjar.io https://*.infird.com https://*.dropbox.com https://*.dropboxapi.com;
       connect-src 'self' https://*.hotjar.com https://*.hotjar.io https://*.make.com wss://*.hotjar.com https://*.dropbox.com https://*.dropboxapi.com https://api.dropboxapi.com;
       img-src 'self' data: https://*.hotjar.com https://*.dropbox.com https://*.dropboxapi.com;
+      media-src 'self' blob:;
       style-src 'self' 'unsafe-inline' https://*.hotjar.com;
       frame-src https://*.hotjar.com https://*.dropbox.com;
       worker-src 'self' blob: https://*.hotjar.com;

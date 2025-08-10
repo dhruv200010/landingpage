@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { FiUpload, FiX, FiCheck, FiAlertCircle, FiMail } from 'react-icons/fi';
+import { FiUpload, FiX, FiCheck, FiAlertCircle, FiMail, FiPlay } from 'react-icons/fi';
 
 interface UploadStatus {
   isUploading: boolean;
@@ -10,6 +10,7 @@ interface UploadStatus {
   error: string | null;
   fileName?: string;
   file?: File;
+  thumbnail?: string;
 }
 
 interface EmailPrompt {
@@ -97,15 +98,31 @@ export default function VideoUpload() {
       return;
     }
 
-    console.log('File validation passed, storing file for later upload...');
-    setUploadStatus({
-      isUploading: false,
-      progress: 100,
-      success: true,
-      error: null,
-      fileName: file.name,
-      file: file
-    });
+    console.log('File validation passed, generating thumbnail...');
+    
+    try {
+      const thumbnail = await generateThumbnail(file);
+      setUploadStatus({
+        isUploading: false,
+        progress: 100,
+        success: true,
+        error: null,
+        fileName: file.name,
+        file: file,
+        thumbnail: thumbnail
+      });
+    } catch (error) {
+      console.error('Error generating thumbnail:', error);
+      // Fallback to no thumbnail if generation fails
+      setUploadStatus({
+        isUploading: false,
+        progress: 100,
+        success: true,
+        error: null,
+        fileName: file.name,
+        file: file
+      });
+    }
 
     // Initialize email prompt state
     setEmailPrompt({
@@ -122,7 +139,8 @@ export default function VideoUpload() {
       isUploading: false,
       progress: 0,
       success: false,
-      error: null
+      error: null,
+      thumbnail: undefined
     });
     setEmailPrompt({
       show: false,
@@ -139,6 +157,42 @@ export default function VideoUpload() {
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  };
+
+  const generateThumbnail = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const video = document.createElement('video');
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      video.onloadedmetadata = () => {
+        // Set canvas size
+        canvas.width = 160;
+        canvas.height = 120;
+        
+        // Seek to 1 second to get a good frame
+        video.currentTime = 1;
+      };
+      
+      video.onseeked = () => {
+        if (ctx) {
+          // Draw the video frame to canvas
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          // Convert to data URL
+          const thumbnail = canvas.toDataURL('image/jpeg', 0.8);
+          resolve(thumbnail);
+        } else {
+          reject(new Error('Could not get canvas context'));
+        }
+      };
+      
+      video.onerror = () => {
+        reject(new Error('Error loading video'));
+      };
+      
+      // Load the video file
+      video.src = URL.createObjectURL(file);
+    });
   };
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
@@ -276,13 +330,24 @@ export default function VideoUpload() {
         <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6">
           <div className="text-center mb-6">
             <div className="flex items-center justify-center space-x-4 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
-                <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-16 h-12 rounded-lg shadow-lg relative overflow-hidden bg-gray-200">
+                {uploadStatus.thumbnail ? (
+                  <img 
+                    src={uploadStatus.thumbnail} 
+                    alt="Video thumbnail" 
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                    <FiPlay className="w-6 h-6 text-white" />
+                  </div>
+                )}
               </div>
-                          <div className="text-left">
-              <h3 className="font-bold text-gray-900 text-lg">Video ready for processing!</h3>
-              <p className="text-sm text-gray-600">Submit your email to receive your viral shorts</p>
-            </div>
+              <div className="text-left">
+                <h3 className="font-bold text-gray-900 text-lg">Video ready for processing!</h3>
+                <p className="text-sm text-gray-600 mb-1">{uploadStatus.fileName}</p>
+                <p className="text-xs text-gray-500">Submit your email to receive your viral shorts</p>
+              </div>
             </div>
           </div>
           
