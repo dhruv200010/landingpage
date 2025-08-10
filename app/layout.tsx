@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Hotjar } from "./components/Hotjar";
+import WhatsAppButton from "./components/WhatsAppButton";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -34,6 +35,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <WhatsAppButton />
         <Analytics />
         <Hotjar id="6475950" sv={6} />
       </body>
