@@ -74,26 +74,52 @@ export default function VideoUpload() {
     });
 
     // Check if it's a video file
-    const videoTypes = ['video/mp4', 'video/avi', 'video/mov', 'video/wmv', 'video/flv', 'video/webm', 'video/mkv'];
+    const videoTypes = ['video/mp4', 'video/avi', 'video/mov', 'video/quicktime', 'video/wmv', 'video/flv', 'video/webm', 'video/mkv'];
     if (!videoTypes.includes(file.type)) {
-      console.error('Invalid file type:', file.type);
+      console.log('Unsupported file type, using fallback mode:', file.type);
+      // Instead of showing error, use fallback mode with just filename and gradient thumbnail
       setUploadStatus({
         isUploading: false,
-        progress: 0,
-        success: false,
-        error: 'Please select a video file (MP4, AVI, MOV, WMV, FLV, WebM, MKV)'
+        progress: 100,
+        success: true,
+        error: null,
+        fileName: file.name,
+        file: file
+        // No thumbnail - will use gradient fallback in the UI
+      });
+      
+      // Initialize email prompt state
+      setEmailPrompt({
+        show: false,
+        email: '',
+        isSubmitting: false,
+        submitted: false,
+        error: null
       });
       return;
     }
 
-    // Check file size (max 100MB)
+    // Check file size (max 100MB) - fallback to filename and gradient thumbnail if too large
     if (file.size > 100 * 1024 * 1024) {
-      console.error('File too large:', file.size, 'bytes');
+      console.log('File too large, using fallback mode:', file.size, 'bytes');
+      // Instead of showing error, use fallback mode with just filename and gradient thumbnail
       setUploadStatus({
         isUploading: false,
-        progress: 0,
-        success: false,
-        error: 'File size must be less than 100MB'
+        progress: 100,
+        success: true,
+        error: null,
+        fileName: file.name,
+        file: file
+        // No thumbnail - will use gradient fallback in the UI
+      });
+      
+      // Initialize email prompt state
+      setEmailPrompt({
+        show: false,
+        email: '',
+        isSubmitting: false,
+        submitted: false,
+        error: null
       });
       return;
     }
@@ -327,7 +353,16 @@ export default function VideoUpload() {
       )}
 
       {uploadStatus.success && !emailPrompt.submitted && (
-        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6">
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6 relative">
+          {/* Remove button */}
+          <button
+            onClick={resetUpload}
+            className="absolute top-3 right-3 w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center transition-colors group"
+            title="Remove video"
+          >
+            <FiX className="w-3 h-3 text-gray-600 group-hover:text-gray-800" />
+          </button>
+          
           <div className="text-center mb-6">
             <div className="flex items-center justify-center space-x-4 mb-4">
               <div className="w-16 h-12 rounded-lg shadow-lg relative overflow-hidden bg-gray-200">
