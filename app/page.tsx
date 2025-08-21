@@ -39,7 +39,7 @@ export default function Home() {
 
   // Countdown timer effect
   useEffect(() => {
-    const targetDate = new Date('August 25, 2025 00:00:00').getTime();
+    const targetDate = new Date('September 2, 2025 00:00:00').getTime();
     
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -298,109 +298,12 @@ export default function Home() {
             <p className="text-slate-500 text-xs -mt-4 md:-mt-6 mb-4 md:mb-6">
               ✉️ P.S. Access details will be shared via email. Limited beta slots — don't miss out.
             </p>
-
-            {/* Launch Offer */}
-            <div className="relative overflow-hidden bg-gradient-to-r from-slate-50 via-blue-50 to-purple-50 rounded-3xl p-6 md:p-8 max-w-3xl mx-auto shadow-xl border border-slate-200">
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-0 left-0 w-32 h-32 bg-purple-300 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 right-0 w-40 h-40 bg-blue-300 rounded-full blur-3xl"></div>
-              </div>
-              
-              {/* Content */}
-              <div className="relative z-10">
-                {/* Header */}
-                <div className="flex items-center justify-center mb-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="relative">
-                      <span className="text-4xl">🎁</span>
-                    </div>
-                    <div>
-                      <h3 className="text-slate-900 font-bold text-lg md:text-xl">Join the Beta Today</h3>
-                      <p className="text-slate-600 text-sm">Get unlimited access during development</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Benefits Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="flex items-center space-x-3 bg-white/80 rounded-xl p-3 backdrop-blur-sm border border-slate-200">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs font-bold">✓</span>
-                    </div>
-                    <div>
-                      <p className="text-slate-900 font-semibold text-sm">No Credit Card</p>
-                      <p className="text-slate-600 text-xs">Required</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3 bg-white/80 rounded-xl p-3 backdrop-blur-sm border border-slate-200">
-                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs font-bold">✓</span>
-                    </div>
-                    <div>
-                      <p className="text-slate-900 font-semibold text-sm">2 Months Pro</p>
-                      <p className="text-slate-600 text-xs">After Launch</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
-
-      {/* AI Features Section - Simple Photo Slideshow */}
-      <section id="features" className="py-4 md:py-6 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top Navigation Bar */}
-          <div className="flex flex-wrap justify-center gap-2 md:gap-2 mb-6 md:mb-8">
-            {aiFeatures.map((feature) => (
-              <button
-                key={feature.id}
-                onClick={() => {
-                  setActiveFeature(feature.id);
-                  setCurrentSlide(0);
-                }}
-                className={`flex items-center px-3 md:px-4 py-2 md:py-2 rounded-lg text-sm md:text-sm font-medium transition-all duration-300 flex-shrink-0 ${
-                  activeFeature === feature.id
-                    ? 'bg-purple-100 text-purple-700 border-2 border-purple-300'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border-2 border-transparent'
-                }`}
-              >
-                <span className="mr-2 md:mr-2 text-base md:text-sm">{feature.icon}</span>
-                <span className="hidden sm:inline">{feature.title}</span>
-                <span className="sm:hidden text-base">{feature.title.split(' ')[1]}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* Description Text */}
-          <div className="text-center mb-6 md:mb-8">
-            <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
-              {aiFeatures.find(f => f.id === activeFeature)?.description}
-            </p>
-          </div>
-
-          {/* Simple Photo Display */}
-          <div className="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden max-w-2xl mx-auto">
-            <div className="relative aspect-[3/2] bg-slate-100">
-              {aiFeatures.find(f => f.id === activeFeature)?.slides && (
-                <img 
-                  src={aiFeatures.find(f => f.id === activeFeature)?.slides[currentSlide]}
-                  alt={aiFeatures.find(f => f.id === activeFeature)?.title}
-                  className="w-full h-full object-cover transition-opacity duration-500"
-                />
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-
 
       {/* Video Preview Section */}
-      <section className="py-16 bg-white">
+      <section className="pt-8 pb-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
@@ -463,13 +366,120 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
 
+
+      {/* AI Features Section - Simple Photo Slideshow */}
+      <section id="features" className="py-4 md:py-6 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Top Navigation Bar */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-2 mb-6 md:mb-8">
+            {aiFeatures.map((feature) => (
+              <button
+                key={feature.id}
+                onClick={() => {
+                  setActiveFeature(feature.id);
+                  setCurrentSlide(0);
+                }}
+                className={`flex items-center px-3 md:px-4 py-2 md:py-2 rounded-lg text-sm md:text-sm font-medium transition-all duration-300 flex-shrink-0 ${
+                  activeFeature === feature.id
+                    ? 'bg-purple-100 text-purple-700 border-2 border-purple-300'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border-2 border-transparent'
+                }`}
+              >
+                <span className="mr-2 md:mr-2 text-base md:text-sm">{feature.icon}</span>
+                <span className="hidden sm:inline">{feature.title}</span>
+                <span className="sm:hidden text-base">{feature.title.split(' ')[1]}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Description Text */}
+          <div className="text-center mb-6 md:mb-8">
+            <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
+              {aiFeatures.find(f => f.id === activeFeature)?.description}
+            </p>
+          </div>
+
+          {/* Simple Photo Display */}
+          <div className="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden max-w-2xl mx-auto">
+            <div className="relative aspect-[3/2] bg-slate-100">
+              {aiFeatures.find(f => f.id === activeFeature)?.slides && (
+                <img 
+                  src={aiFeatures.find(f => f.id === activeFeature)?.slides[currentSlide]}
+                  alt={aiFeatures.find(f => f.id === activeFeature)?.title}
+                  className="w-full h-full object-cover transition-opacity duration-500"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Launch Offer Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div 
+            className="relative overflow-hidden bg-gradient-to-r from-slate-50 via-blue-50 to-purple-50 rounded-3xl p-6 md:p-8 max-w-3xl mx-auto shadow-xl border border-slate-200 cursor-pointer hover:shadow-2xl transition-all duration-300"
+            onClick={() => {
+              document.getElementById('hero')?.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }}
+          >
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-purple-300 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 right-0 w-40 h-40 bg-blue-300 rounded-full blur-3xl"></div>
+            </div>
+            
+            {/* Content */}
+            <div className="relative z-10">
+              {/* Header */}
+              <div className="flex items-center justify-center mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="relative">
+                    <span className="text-4xl">🎁</span>
                   </div>
-        </section>
+                  <div>
+                    <h3 className="text-slate-900 font-bold text-lg md:text-xl">Join the Beta Today</h3>
+                    <p className="text-slate-600 text-sm">Get unlimited access during development</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Benefits Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="flex items-center space-x-3 bg-white/80 rounded-xl p-3 backdrop-blur-sm border border-slate-200">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-slate-900 font-semibold text-sm">No Credit Card</p>
+                    <p className="text-slate-600 text-xs">Required</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-3 bg-white/80 rounded-xl p-3 backdrop-blur-sm border border-slate-200">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-slate-900 font-semibold text-sm">2 Months Pro</p>
+                    <p className="text-slate-600 text-xs">After Launch</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Comparison Section */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
