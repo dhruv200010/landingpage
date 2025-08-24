@@ -332,12 +332,12 @@ export default function Home() {
                   <span className="text-white text-xs font-medium">273K</span>
                 </div>
                 
-                {/* Play Button */}
-                <div className="absolute inset-0 flex items-center justify-center">
+                {/* Play Button - Commented out */}
+                {/* <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
                     <FiPlay className="w-4 h-4 text-blue-600 ml-0.5" />
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -357,12 +357,12 @@ export default function Home() {
                   <span className="text-white text-xs font-medium">3.5M</span>
                 </div>
                 
-                {/* Play Button */}
-                <div className="absolute inset-0 flex items-center justify-center">
+                {/* Play Button - Commented out */}
+                {/* <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
                     <FiPlay className="w-4 h-4 text-white ml-0.5" />
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
