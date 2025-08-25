@@ -241,15 +241,20 @@ export default function Home() {
               <span className="hero-gradient">Viral Shorts</span>
             </h1>
             
-            <p className="text-lg md:text-xl lg:text-2xl text-slate-600 mb-6 md:mb-8 max-w-3xl mx-auto">
-              AI-powered video editing that finds viral moments, adds captions, reframes content, and generates titles automatically
-            </p>
+                         <p className="text-lg md:text-xl lg:text-2xl text-slate-600 mb-6 md:mb-8 max-w-3xl mx-auto">
+               AI-powered video editing that finds viral moments, adds captions, reframes content, and generates titles automatically
+             </p>
 
-            {/* Email Signup Form */}
-            {!isSubmitted ? (
-              <div className="max-w-md mx-auto mb-6 md:mb-8">
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                          {/* Email Signup Form */}
+             {!isSubmitted ? (
+               <div className="max-w-md mx-auto mb-6 md:mb-8">
+                                   {/* Phone Number Label */}
+                  <p className="text-sm md:text-base text-slate-700 mb-1 font-medium text-center">
+                    Enter Phone Number With Country Code
+                  </p>
+                 
+                 <form onSubmit={handleSubmit} className="space-y-3">
+                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <input
                       type="tel"
                       value={phone}
@@ -262,8 +267,8 @@ export default function Home() {
                           setPhone(filteredValue);
                         }
                       }}
-                      placeholder="Enter Phone number with Country code"
-                      className="w-full sm:w-[320px] md:w-[360px] lg:w-[400px] xl:w-[440px] px-4 py-2 md:py-1 lg:py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-base placeholder:text-gray-500 text-black bg-white"
+                      placeholder="+91 9876543210"
+                      className="w-full sm:w-[240px] md:w-[260px] lg:w-[280px] xl:w-[300px] px-4 py-2 md:py-1 lg:py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-base placeholder:text-gray-500 text-black bg-white"
                       disabled={isLoading}
                       maxLength={15}
                     />
