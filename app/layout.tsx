@@ -36,7 +36,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <WhatsAppButton />
+        {/* <WhatsAppButton /> */}
         <Analytics />
         <Hotjar id="6475950" sv={6} />
         <Clarity id="sy5bqnel6l" />

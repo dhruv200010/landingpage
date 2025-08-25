@@ -13,9 +13,9 @@ interface UploadStatus {
   thumbnail?: string;
 }
 
-interface EmailPrompt {
+interface PhonePrompt {
   show: boolean;
-  email: string;
+  phone: string;
   isSubmitting: boolean;
   submitted: boolean;
   error: string | null;
@@ -28,9 +28,9 @@ export default function VideoUpload() {
     success: false,
     error: null
   });
-  const [emailPrompt, setEmailPrompt] = useState<EmailPrompt>({
+  const [phonePrompt, setPhonePrompt] = useState<PhonePrompt>({
     show: false,
-    email: '',
+    phone: '',
     isSubmitting: false,
     submitted: false,
     error: null
@@ -88,10 +88,10 @@ export default function VideoUpload() {
         // No thumbnail - will use gradient fallback in the UI
       });
       
-      // Initialize email prompt state
-      setEmailPrompt({
+      // Initialize phone prompt state
+      setPhonePrompt({
         show: false,
-        email: '',
+        phone: '',
         isSubmitting: false,
         submitted: false,
         error: null
@@ -113,10 +113,10 @@ export default function VideoUpload() {
         // No thumbnail - will use gradient fallback in the UI
       });
       
-      // Initialize email prompt state
-      setEmailPrompt({
+      // Initialize phone prompt state
+      setPhonePrompt({
         show: false,
-        email: '',
+        phone: '',
         isSubmitting: false,
         submitted: false,
         error: null
@@ -150,10 +150,10 @@ export default function VideoUpload() {
       });
     }
 
-    // Initialize email prompt state
-    setEmailPrompt({
+    // Initialize phone prompt state
+    setPhonePrompt({
       show: false,
-      email: '',
+      phone: '',
       isSubmitting: false,
       submitted: false,
       error: null
@@ -168,9 +168,9 @@ export default function VideoUpload() {
       error: null,
       thumbnail: undefined
     });
-    setEmailPrompt({
+    setPhonePrompt({
       show: false,
-      email: '',
+      phone: '',
       isSubmitting: false,
       submitted: false,
       error: null
@@ -180,9 +180,11 @@ export default function VideoUpload() {
     }
   };
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const validatePhone = (phone: string) => {
+    // Remove all non-digit characters
+    const cleaned = phone.replace(/\D/g, '');
+    // Check if it's a valid phone number (at least 10 digits)
+    return cleaned.length >= 10;
   };
 
   const generateThumbnail = (file: File): Promise<string> => {
@@ -221,61 +223,42 @@ export default function VideoUpload() {
     });
   };
 
-  const handleEmailSubmit = async (e: React.FormEvent) => {
+  const handlePhoneSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setEmailPrompt(prev => ({ ...prev, error: null }));
+    setPhonePrompt(prev => ({ ...prev, error: null }));
     
-    if (!emailPrompt.email) {
-      setEmailPrompt(prev => ({ ...prev, error: 'Please enter your email address' }));
+    if (!phonePrompt.phone) {
+      setPhonePrompt(prev => ({ ...prev, error: 'Please enter your phone number' }));
       return;
     }
     
-    if (!validateEmail(emailPrompt.email)) {
-      setEmailPrompt(prev => ({ ...prev, error: 'Please enter a valid email address' }));
+    if (!validatePhone(phonePrompt.phone)) {
+      setPhonePrompt(prev => ({ ...prev, error: 'Please enter a valid phone number' }));
       return;
     }
 
-    setEmailPrompt(prev => ({ ...prev, isSubmitting: true }));
+    setPhonePrompt(prev => ({ ...prev, isSubmitting: true }));
     
     try {
-      // Dummy upload - just call the endpoint without sending file data
-      console.log('Calling dummy upload endpoint...');
-      const formData = new FormData();
-      
-      // Optionally, you can skip sending the file entirely:
-      // formData.append('file', uploadStatus.file);
-      
-      const uploadResponse = await fetch('/api/dropbox/upload', {
-        method: 'POST',
-        body: formData
-      });
-
-      if (!uploadResponse.ok) {
-        const errorData = await uploadResponse.json();
-        throw new Error(errorData.error || 'Upload request failed');
-      }
-
-      console.log('Dummy upload completed successfully');
-
-      // Then send email to Make.com webhook
+      // Send phone to Make.com webhook directly
       await fetch('https://hook.us2.make.com/8hamrtcq1dj54cfvmrpwb72mok8lb417', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: emailPrompt.email }),
+        body: JSON.stringify({ phone: phonePrompt.phone }),
       });
       
-      console.log('Email submitted:', emailPrompt.email);
-      setEmailPrompt(prev => ({ 
+      console.log('Phone submitted:', phonePrompt.phone);
+      setPhonePrompt(prev => ({ 
         ...prev, 
         isSubmitting: false, 
         submitted: true 
       }));
       
     } catch (err) {
-      console.error('Upload error:', err);
-      setEmailPrompt(prev => ({ 
+      console.error('Phone submission error:', err);
+      setPhonePrompt(prev => ({ 
         ...prev, 
         isSubmitting: false, 
         error: 'Something went wrong. Please try again.' 
@@ -352,7 +335,7 @@ export default function VideoUpload() {
         </div>
       )}
 
-      {uploadStatus.success && !emailPrompt.submitted && (
+      {uploadStatus.success && !phonePrompt.submitted && (
         <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6 relative">
           {/* Remove button */}
           <button
@@ -381,45 +364,54 @@ export default function VideoUpload() {
               <div className="text-left">
                 <h3 className="font-bold text-gray-900 text-lg">Video ready for processing!</h3>
                 <p className="text-sm text-gray-600 mb-1">{uploadStatus.fileName}</p>
-                <p className="text-xs text-gray-500">Submit your email to receive your viral shorts</p>
+                <p className="text-xs text-gray-500">Submit your phone number to receive your viral shorts</p>
               </div>
             </div>
           </div>
           
-          <form onSubmit={handleEmailSubmit} className="space-y-3">
+          <form onSubmit={handlePhoneSubmit} className="space-y-3">
             <div className="flex space-x-2">
               <input
-                type="email"
-                value={emailPrompt.email}
-                onChange={(e) => setEmailPrompt(prev => ({ ...prev, email: e.target.value }))}
-                placeholder="Enter your email address"
+                type="tel"
+                value={phonePrompt.phone}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  // Only allow numbers, plus sign, and spaces
+                  const filteredValue = value.replace(/[^\d\s+]/g, '');
+                  // Limit to 15 characters (international standard)
+                  if (filteredValue.length <= 15) {
+                    setPhonePrompt(prev => ({ ...prev, phone: filteredValue }));
+                  }
+                }}
+                placeholder="Enter Phone number with Country code"
                 className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm text-black"
-                disabled={emailPrompt.isSubmitting}
+                disabled={phonePrompt.isSubmitting}
+                maxLength={15}
               />
               <button
                 type="submit"
-                disabled={emailPrompt.isSubmitting}
+                disabled={phonePrompt.isSubmitting}
                 className="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {emailPrompt.isSubmitting ? 'Sending...' : 'Get My Shorts'}
+                {phonePrompt.isSubmitting ? 'Sending...' : 'Get My Shorts'}
               </button>
             </div>
             
-            {emailPrompt.error && (
-              <p className="text-red-500 text-xs">{emailPrompt.error}</p>
+            {phonePrompt.error && (
+              <p className="text-red-500 text-xs">{phonePrompt.error}</p>
             )}
           </form>
         </div>
       )}
 
-      {uploadStatus.success && emailPrompt.submitted && (
+      {uploadStatus.success && phonePrompt.submitted && (
         <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6">
           <div className="text-center">
             <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <FiCheck className="w-6 h-6 text-white" />
             </div>
-            <p className="text-lg text-green-700 font-bold mb-2">You will receive your edited shorts in your inbox soon!</p>
-            <p className="text-sm text-gray-600">Make sure to check your spam folder too</p>
+            <p className="text-lg text-green-700 font-bold mb-2">We'll contact you soon!</p>
+            <p className="text-sm text-gray-600">Check your WhatsApp or SMS for updates</p>
           </div>
         </div>
       )}

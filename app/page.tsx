@@ -24,7 +24,8 @@ import {
 import VideoUpload from './components/VideoUpload';
 
 export default function Home() {
-  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [countryCode, setCountryCode] = useState('+1'); // Default to US
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -78,40 +79,42 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [activeFeature]);
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const validatePhone = (phone: string) => {
+    // Remove all non-digit characters
+    const cleaned = phone.replace(/\D/g, '');
+    // Check if it's a valid phone number (at least 10 digits)
+    return cleaned.length >= 10;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     
-    if (!email) {
-      setError('Please enter your email address');
+    if (!phone) {
+      setError('Please enter your phone number');
       return;
     }
     
-    if (!validateEmail(email)) {
-      setError('Please enter a valid email address');
+    if (!validatePhone(phone)) {
+      setError('Please enter a valid phone number');
       return;
     }
 
     setIsLoading(true);
     
     try {
-      // Send email to Make.com webhook
+      // Send phone to Make.com webhook
       await fetch('https://hook.us2.make.com/8hamrtcq1dj54cfvmrpwb72mok8lb417', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ phone }),
       });
       
-      console.log('Email submitted:', email);
+      console.log('Phone submitted:', phone);
       setIsSubmitted(true);
-      setEmail('');
+      setPhone('');
     } catch (err) {
       setError('Something went wrong. Please try again.');
     } finally {
@@ -246,14 +249,23 @@ export default function Home() {
             {!isSubmitted ? (
               <div className="max-w-md mx-auto mb-6 md:mb-8">
                 <form onSubmit={handleSubmit} className="space-y-3">
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Write your email here"
-                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-base placeholder:text-black text-black bg-white"
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        // Only allow numbers, plus sign, and spaces
+                        const filteredValue = value.replace(/[^\d\s+]/g, '');
+                        // Limit to 15 characters (international standard)
+                        if (filteredValue.length <= 15) {
+                          setPhone(filteredValue);
+                        }
+                      }}
+                      placeholder="Enter Phone number with Country code"
+                      className="w-full sm:w-[320px] md:w-[360px] lg:w-[400px] xl:w-[440px] px-4 py-2 md:py-1 lg:py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-base placeholder:text-gray-500 text-black bg-white"
                       disabled={isLoading}
+                      maxLength={15}
                     />
                     <button
                       type="submit"
@@ -273,9 +285,9 @@ export default function Home() {
                              <div className="max-w-2xl mx-auto mb-6 md:mb-8">
                  <div className="bg-green-50 border border-green-200 rounded-xl p-4 md:p-6">
                    <div className="text-center">
-                     <div className="text-4xl mb-3">📧</div>
+                     <div className="text-4xl mb-3">📱</div>
                      <h3 className="text-base md:text-lg font-semibold text-green-800 mb-2">Thanks for signing up!</h3>
-                     <p className="text-sm md:text-base text-green-700">Make sure to check your inbox and spam folder</p>
+                     <p className="text-sm md:text-base text-green-700">We'll contact you soon!</p>
                    </div>
                  </div>
                </div>
@@ -296,7 +308,7 @@ export default function Home() {
 
             {/* P.S. Text */}
             <p className="text-slate-500 text-xs -mt-4 md:-mt-6 mb-4 md:mb-6">
-              ✉️ P.S. Access details will be shared via email. Limited beta slots — don't miss out.
+              📱 P.S. Access details will be shared via WhatsApp/SMS. Limited beta slots — don't miss out.
             </p>
           </div>
         </div>
